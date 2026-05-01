@@ -13,9 +13,9 @@ import (
 	"time"
 )
 
-// Used to generate a TOTP based on the key K and the number of seconds between generations X
-func TOTP(K string, X int) (string, error) {
-	return HOTP(K, int(time.Now().Unix())/X, 3)
+// Used to generate a TOTP based on the key K and the number of seconds between generations X and the type of hash (as defined by HOTP)
+func TOTP(K string, X int, hashType int) (string, error) {
+	return HOTP(K, int(time.Now().Unix())/X, hashType)
 }
 
 // Used to generate a HOTP based on the key, counter and the type of hash (0 = SHA1 1 = SHA224, 2 = SHA256, 3 = SHA384, 4 = SHA512)
